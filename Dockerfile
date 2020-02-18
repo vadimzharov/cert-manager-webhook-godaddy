@@ -1,4 +1,4 @@
-FROM golang:1.12.4-alpine AS build_deps
+FROM golang:1.14-alpine AS build_deps
 
 RUN apk add --no-cache git
 
@@ -8,7 +8,13 @@ ENV GO111MODULE=on
 COPY go.mod .
 COPY go.sum .
 
-RUN go mod download
+RUN go mod download || true 
+RUN go mod download || true 
+RUN go mod download || true 
+RUN go mod download || true 
+RUN go mod download || true 
+RUN go mod download || true
+RUN go mod download 
 
 FROM build_deps AS build
 

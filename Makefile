@@ -1,5 +1,5 @@
-IMAGE_NAME := "webhook"
-IMAGE_TAG := "latest"
+IMAGE_NAME ?= "webhook"
+IMAGE_TAG ?= "latest"
 
 OUT := $(shell pwd)/_out
 
