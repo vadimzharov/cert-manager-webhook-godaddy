@@ -18,6 +18,14 @@ RUN go mod download
 
 FROM build_deps AS build
 
+ARG IMAGE_ARCH=arm
+
+ARG ARM_VERSION=7
+
+ENV GOARCH=$IMAGE_ARCH
+
+ENV GOARM=$ARM_VERSION
+
 COPY . .
 
 RUN CGO_ENABLED=0 go build -o webhook -ldflags '-w -extldflags "-static"' .
