@@ -2,7 +2,7 @@ FROM golang:1.14-alpine AS build_deps
 
 RUN apk add --no-cache git
 
-WORKDIR /workspace
+WORKDIR /usr/src
 ENV GO111MODULE=on
 
 COPY go.mod .
@@ -34,6 +34,6 @@ FROM alpine:3.9
 
 RUN apk add --no-cache ca-certificates
 
-COPY --from=build /workspace/webhook /usr/local/bin/webhook
+COPY --from=build /usr/src/webhook /usr/local/bin/webhook
 
 ENTRYPOINT ["webhook"]
